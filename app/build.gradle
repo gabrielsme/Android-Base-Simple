@@ -3,6 +3,9 @@ plugins {
     id 'kotlin-android'
 }
 
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
+
 android {
     def globalConfiguration = rootProject.extensions.getByName("ext")
 
@@ -49,6 +52,9 @@ dependencies {
     implementation dependencies.appCompat
     implementation dependencies.materialDesign
     implementation dependencies.constraintLayout
+
+    implementation dependencies.hiltAndroid
+    kapt dependencies.hiltAndroidCompiler
 
     testImplementation testDependencies.junit
 
