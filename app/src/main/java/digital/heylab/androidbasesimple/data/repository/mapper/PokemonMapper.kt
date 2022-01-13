@@ -6,7 +6,8 @@ import digital.heylab.androidbasesimple.data.source.remote.model.PokemonModel
 class PokemonMapper {
     fun mapper(model: PokemonModel): Pokemon {
         return Pokemon(
-            name = model.name
+            name = model.name,
+            location = model.location_area_encounters
         )
     }
 }

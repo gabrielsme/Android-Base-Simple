@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import digital.heylab.androidbasesimple.databinding.ActivityMainBinding
+import digital.heylab.androidbasesimple.utils.resource.Resource
+import digital.heylab.androidbasesimple.utils.resource.Status
+import digital.heylab.androidbasesimple.utils.resource.Status.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
@@ -22,13 +25,23 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupObservers() {
         viewModel.pokemon.observe(this) { pokemon ->
-            Toast.makeText(this, "Pokemon: ${pokemon.data?.name}", Toast.LENGTH_SHORT).show()
+            when (pokemon.status) {
+                SUCCESS -> {
+                    Toast.makeText(this, "Pokemon: ${pokemon.data?.location}", Toast.LENGTH_SHORT).show()
+                }
+                LOADING -> {
+                    Toast.makeText(this, "Loading", Toast.LENGTH_SHORT).show()
+                }
+                ERROR -> {
+                    Toast.makeText(this, "Deu ruim", Toast.LENGTH_SHORT).show()
+                }
+            }
+
         }
     }
 
     private fun setupEvents() {
         binding.texto.setOnClickListener {
-            Toast.makeText(this, "Eita porra", Toast.LENGTH_SHORT).show()
             viewModel.getPokemon("ditto")
         }
     }

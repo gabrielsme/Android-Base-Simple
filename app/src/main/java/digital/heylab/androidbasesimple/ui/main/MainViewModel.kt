@@ -24,7 +24,7 @@ class MainViewModel constructor(
 
         viewModelScope.launch {
             remoteRepository.getPokemon(name).let { pokemon ->
-                _pokemon.postValue(Resource.success(pokemon))
+                _pokemon.value = pokemon
             }
         }
     }

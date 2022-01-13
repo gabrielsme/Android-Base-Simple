@@ -4,6 +4,7 @@ import com.facebook.stetho.okhttp3.StethoInterceptor
 import digital.heylab.androidbasesimple.BuildConfig
 import digital.heylab.androidbasesimple.data.repository.RemoteRepository
 import digital.heylab.androidbasesimple.data.source.remote.RemoteService
+import digital.heylab.androidbasesimple.network.ResponseHandler
 import digital.heylab.androidbasesimple.ui.main.MainViewModel
 import okhttp3.OkHttpClient
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -13,12 +14,13 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 val networkModule = module {
     factory { provideOkHttpClient() }
+    factory { ResponseHandler() }
     single { provideRetrofit(okHttpClient = get()) }
 }
 
 val productsModule = module {
     factory { provideRemoteService(retrofit = get()) }
-    factory { RemoteRepository(remoteService = get()) }
+    factory { RemoteRepository(remoteService = get(), responseHandler = get()) }
     viewModel { MainViewModel(remoteRepository = get()) }
 }
 
