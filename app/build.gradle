@@ -1,20 +1,18 @@
 plugins {
     id 'com.android.application'
-    id 'kotlin-android'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize'
 }
-
-apply plugin: 'kotlin-kapt'
 
 android {
     def globalConfiguration = rootProject.extensions.getByName("ext")
 
-    compileSdkVersion globalConfiguration["compileSdk"]
-    buildToolsVersion globalConfiguration["buildToolsVersion"]
+    compileSdk globalConfiguration["compileSdk"]
 
     defaultConfig {
         applicationId "digital.heylab.androidbasesimple"
-        minSdkVersion globalConfiguration["minSdk"]
-        targetSdkVersion globalConfiguration["targetSdk"]
+        minSdk globalConfiguration["minSdk"]
+        targetSdk globalConfiguration["targetSdk"]
         versionCode globalConfiguration["versionCode"]
         versionName globalConfiguration["versionName"]
 
