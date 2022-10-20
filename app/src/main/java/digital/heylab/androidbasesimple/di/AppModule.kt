@@ -4,8 +4,8 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import digital.heylab.androidbasesimple.data.repository.RemoteRepository
-import digital.heylab.androidbasesimple.data.source.remote.RemoteService
+import digital.heylab.androidbasesimple.data.repository.movies.MoviesRepository
+import digital.heylab.androidbasesimple.data.source.remote.movies.MoviesService
 import digital.heylab.androidbasesimple.network.ResponseHandler
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Singleton
@@ -17,8 +17,8 @@ class AppModule {
     @Provides
     @Singleton
     fun provideRemoteRepository(
-        remoteService: RemoteService,
+        moviesService: MoviesService,
         responseHandler: ResponseHandler,
         dispatcher: CoroutineDispatcher
-    ) = RemoteRepository(remoteService, responseHandler, dispatcher)
+    ) = MoviesRepository(moviesService, responseHandler, dispatcher)
 }

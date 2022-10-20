@@ -6,7 +6,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import digital.heylab.androidbasesimple.BuildConfig
-import digital.heylab.androidbasesimple.data.source.remote.RemoteService
+import digital.heylab.androidbasesimple.data.source.remote.movies.MoviesService
 import digital.heylab.androidbasesimple.network.ResponseHandler
 import digital.heylab.androidbasesimple.network.TokenInterceptor
 import kotlinx.coroutines.CoroutineDispatcher
@@ -42,8 +42,8 @@ class NetworkModule {
     }
 
     @Provides
-    fun provideRemoteService(retrofit: Retrofit): RemoteService =
-        retrofit.create(RemoteService::class.java)
+    fun provideRemoteService(retrofit: Retrofit): MoviesService =
+        retrofit.create(MoviesService::class.java)
 
     @Provides
     fun provideResponseHandler() : ResponseHandler = ResponseHandler()

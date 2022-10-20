@@ -1,4 +1,4 @@
-package digital.heylab.androidbasesimple.data.source.remote.model
+package digital.heylab.androidbasesimple.data.source.remote.movies.model
 
 
 import kotlinx.parcelize.Parcelize
