@@ -6,7 +6,7 @@ import digital.heylab.androidbasesimple.data.source.remote.model.MovieModel
 class MovieMapper {
     fun mapper(model: MovieModel) : Movie {
         return Movie(
-            title = model.Title
+            title = model.title
         )
     }
 }

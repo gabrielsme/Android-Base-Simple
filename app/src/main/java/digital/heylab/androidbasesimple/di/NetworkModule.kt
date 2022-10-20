@@ -24,7 +24,7 @@ class NetworkModule {
         return Retrofit
             .Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("https://www.omdbapi.com/")
+            .baseUrl("https://api.themoviedb.org/3/")
             .client(okHttpClient)
             .build()
     }

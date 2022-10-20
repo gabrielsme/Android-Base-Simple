@@ -11,7 +11,7 @@ class TokenInterceptor : Interceptor {
         val originalHttpUrl = original.url()
 
         val url = originalHttpUrl.newBuilder()
-            .addQueryParameter("apikey", BuildConfig.OMDB_KEY)
+            .addQueryParameter("api_key", BuildConfig.THEMOVIEDB_KEY)
             .build()
 
         val requestBuilder = original.newBuilder()
