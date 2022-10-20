@@ -2,6 +2,8 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
 }
 
 android {
@@ -50,8 +52,8 @@ dependencies {
     implementation dependencies.constraintLayout
     implementation dependencies.activityKtx
 
-    implementation dependencies.koin
-    implementation dependencies.koinAndroid
+    implementation dependencies.hiltAndroid
+    kapt dependencies.hiltCompiler
 
     implementation dependencies.retrofit
     implementation dependencies.retrofitConverterGson
@@ -62,4 +64,8 @@ dependencies {
 
     androidTestImplementation testDependencies.extJunit
     androidTestImplementation testDependencies.espresso
+}
+
+kapt {
+    correctErrorTypes true
 }
