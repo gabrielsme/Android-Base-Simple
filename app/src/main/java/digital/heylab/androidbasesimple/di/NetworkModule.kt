@@ -8,6 +8,7 @@ import dagger.hilt.components.SingletonComponent
 import digital.heylab.androidbasesimple.BuildConfig
 import digital.heylab.androidbasesimple.data.source.remote.RemoteService
 import digital.heylab.androidbasesimple.network.ResponseHandler
+import digital.heylab.androidbasesimple.network.TokenInterceptor
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import okhttp3.OkHttpClient
@@ -23,19 +24,21 @@ class NetworkModule {
         return Retrofit
             .Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("https://pokeapi.co/api/v2/")
+            .baseUrl("https://www.omdbapi.com/")
             .client(okHttpClient)
             .build()
     }
 
     @Provides
-    fun provideOkHttpClient(): OkHttpClient = if (BuildConfig.DEBUG) {
-        OkHttpClient
-            .Builder()
-            .addNetworkInterceptor(StethoInterceptor())
-            .build()
-    } else {
-        OkHttpClient.Builder().build()
+    fun provideOkHttpClient(): OkHttpClient {
+        val okHttpClient = OkHttpClient.Builder()
+            .addNetworkInterceptor(TokenInterceptor())
+
+        if (BuildConfig.DEBUG) {
+            okHttpClient.addNetworkInterceptor(StethoInterceptor())
+        }
+
+        return okHttpClient.build()
     }
 
     @Provides

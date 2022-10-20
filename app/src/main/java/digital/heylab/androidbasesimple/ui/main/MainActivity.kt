@@ -27,11 +27,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupObservers() {
         lifecycleScope.launch {
-            viewModel.pokemon.collect { pokemon ->
+            viewModel.movie.collect { movie ->
                 var text = ""
-                when (pokemon.status) {
+                when (movie.status) {
                     SUCCESS -> {
-                        text = "Pokemon: ${pokemon.data?.location}"
+                        text = "Movie: ${movie.data?.title}"
                     }
                     LOADING -> {
                         text = "Loading"
@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupEvents() {
         binding.texto.setOnClickListener {
-            viewModel.getPokemon("ditto")
+            viewModel.getMovieById("tt1285016")
         }
     }
 }

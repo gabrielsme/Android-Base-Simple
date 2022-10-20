@@ -1,12 +1,11 @@
 package digital.heylab.androidbasesimple.data.source.remote
 
-import digital.heylab.androidbasesimple.data.source.remote.model.PokemonModel
+import digital.heylab.androidbasesimple.data.source.remote.model.MovieModel
 import retrofit2.http.GET
-import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface RemoteService {
 
-    @GET("pokemon/{name}")
-    suspend fun getPokemon(@Path("name") name: String): PokemonModel
-
+    @GET("/?")
+    suspend fun getMovieById(@Query("i") i: String): MovieModel
 }

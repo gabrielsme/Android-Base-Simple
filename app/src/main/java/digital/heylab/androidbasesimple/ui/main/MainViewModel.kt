@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import digital.heylab.androidbasesimple.data.repository.RemoteRepository
-import digital.heylab.androidbasesimple.data.repository.model.Pokemon
+import digital.heylab.androidbasesimple.data.repository.model.Movie
 import digital.heylab.androidbasesimple.utils.resource.Resource
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
@@ -16,15 +16,15 @@ class MainViewModel @Inject constructor(
     private val remoteRepository: RemoteRepository
 ) : ViewModel() {
 
-    private val _pokemon = MutableSharedFlow<Resource<Pokemon>>()
-    val pokemon: SharedFlow<Resource<Pokemon>> = _pokemon
+    private val _movie = MutableSharedFlow<Resource<Movie>>()
+    val movie: SharedFlow<Resource<Movie>> = _movie
 
-    fun getPokemon(name: String) {
+    fun getMovieById(id: String) {
         viewModelScope.launch {
-            _pokemon.emit(Resource.loading())
+            _movie.emit(Resource.loading())
 
-            remoteRepository.getPokemon(name).let { pokemon ->
-                _pokemon.emit(pokemon)
+            remoteRepository.getMovieById(id).let { response ->
+                _movie.emit(response)
             }
         }
     }
