@@ -24,7 +24,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField("String", "OMDB_KEY", apikeyProperties['OMDB_KEY'])
+        buildConfigField("String", "THEMOVIEDB_KEY", apikeyProperties['THEMOVIEDB_KEY'])
         vectorDrawables {
             useSupportLibrary true
         }
