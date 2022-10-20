@@ -3,10 +3,10 @@ package digital.heylab.androidbasesimple.ui.main
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
 import digital.heylab.androidbasesimple.databinding.ActivityMainBinding
-import digital.heylab.androidbasesimple.utils.resource.Resource
-import digital.heylab.androidbasesimple.utils.resource.Status
 import digital.heylab.androidbasesimple.utils.resource.Status.*
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
@@ -24,19 +24,24 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupObservers() {
-        viewModel.pokemon.observe(this) { pokemon ->
-            when (pokemon.status) {
-                SUCCESS -> {
-                    Toast.makeText(this, "Pokemon: ${pokemon.data?.location}", Toast.LENGTH_SHORT).show()
+        lifecycleScope.launch {
+            viewModel.pokemon.collect { pokemon ->
+                var text = ""
+                when (pokemon.status) {
+                    SUCCESS -> {
+                        text = "Pokemon: ${pokemon.data?.location}"
+                    }
+                    LOADING -> {
+                        text = "Loading"
+                    }
+                    ERROR -> {
+                        text = "Deu ruim"
+                    }
                 }
-                LOADING -> {
-                    Toast.makeText(this, "Loading", Toast.LENGTH_SHORT).show()
-                }
-                ERROR -> {
-                    Toast.makeText(this, "Deu ruim", Toast.LENGTH_SHORT).show()
-                }
-            }
 
+                Toast.makeText(this@MainActivity, text, Toast.LENGTH_SHORT).show()
+                binding.texto.text = text
+            }
         }
     }
 
