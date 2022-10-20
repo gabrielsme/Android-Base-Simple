@@ -25,6 +25,9 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField("String", "OMDB_KEY", apikeyProperties['OMDB_KEY'])
+        vectorDrawables {
+            useSupportLibrary true
+        }
     }
 
     buildTypes {
@@ -45,6 +48,15 @@ android {
 
     buildFeatures {
         viewBinding true
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.1.1'
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
     }
 }
 
@@ -57,6 +69,10 @@ dependencies {
     implementation dependencies.materialDesign
     implementation dependencies.constraintLayout
     implementation dependencies.activityKtx
+    implementation dependencies.composeUi
+    implementation dependencies.composeActivity
+    implementation dependencies.composeMaterial
+    implementation dependencies.composeToolingPreview
 
     implementation dependencies.hiltAndroid
     kapt dependencies.hiltCompiler
@@ -70,6 +86,10 @@ dependencies {
 
     androidTestImplementation testDependencies.extJunit
     androidTestImplementation testDependencies.espresso
+    androidTestImplementation testDependencies.composeJunit
+
+    debugImplementation testDependencies.composeTooling
+    debugImplementation testDependencies.composeTestManifest
 }
 
 kapt {

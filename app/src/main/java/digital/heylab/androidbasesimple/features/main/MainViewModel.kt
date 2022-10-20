@@ -1,4 +1,4 @@
-package digital.heylab.androidbasesimple.ui.main
+package digital.heylab.androidbasesimple.features.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
