@@ -51,7 +51,7 @@ android {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion '1.1.1'
+        kotlinCompilerExtensionVersion globalConfiguration["composeVersion"]
     }
     packagingOptions {
         resources {
@@ -73,14 +73,17 @@ dependencies {
     implementation dependencies.composeActivity
     implementation dependencies.composeMaterial
     implementation dependencies.composeToolingPreview
+    implementation dependencies.composeIconsCore
+    implementation dependencies.composeIconsExtended
+    implementation dependencies.composeViewModel
+    implementation dependencies.composeLifecycleRuntime
+    implementation dependencies.navigationFragment
 
     implementation dependencies.hiltAndroid
     kapt dependencies.hiltCompiler
+    implementation dependencies.hiltNavigationCompose
 
-    implementation dependencies.retrofit
-    implementation dependencies.retrofitConverterGson
-    implementation dependencies.stetho
-    implementation dependencies.stethoOkHttp3
+    implementation dependencies.tmdbJava
 
     testImplementation testDependencies.junit
 

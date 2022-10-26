@@ -13,7 +13,7 @@ open class ResponseHandler {
         return Resource.success(data)
     }
 
-    fun <T : Any> handleException(e: Exception): Resource<T> {
+    fun <T : Any> handleException(e: Throwable): Resource<T> {
         return when (e) {
             is HttpException -> Resource.error(getErrorMessage(e.code()), null)
             is SocketTimeoutException -> Resource.error(getErrorMessage(ErrorCodes.SocketTimeOut.code), null)

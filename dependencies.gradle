@@ -12,15 +12,18 @@ ext {
     appCompatVersion = '1.5.1'
     materialDesignVersion = '1.6.1'
     constraintLayoutVersion = '2.1.4'
-    composeVersion = '1.3.0-rc01'
+    composeBomVersion = '2022.10.00'
+    composeVersion = '1.3.0'
     composeActivityVersion = '1.6.0'
-
+    composeViewModelVersion = '2.5.1'
+    composeLifecycleRuntimeVersion = '2.6.0-alpha03'
+    navigationVersion = '2.5.1'
     activityKtxVersion = '1.6.0'
 
-    hiltVersion = '2.44'
+    daggerVersion = '2.44'
+    hiltVersion = '1.0.0'
 
-    retrofitVersion = '2.9.0'
-    stethoVersion = '1.6.0'
+    tmdbJavaVersion = '2.8.1'
 
     junitVersion = '4.13.2'
     extJunitVersion = '1.1.3'
@@ -31,17 +34,21 @@ ext {
         appCompat                           : "androidx.appcompat:appcompat:$appCompatVersion",
         materialDesign                      : "com.google.android.material:material:$materialDesignVersion",
         constraintLayout                    : "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion",
+        composeBom                          : "androidx.compose:compose-bom:$composeBomVersion",
         composeUi                           : "androidx.compose.ui:ui:$composeVersion",
-        composeActivity                     : "androidx.activity:activity-compose:$composeActivityVersion",
+        composeActivity                     : "androidx.activity:activity-compose:$composeVersion",
         composeMaterial                     : "androidx.compose.material:material:$composeVersion",
         composeToolingPreview               : "androidx.compose.ui:ui-tooling-preview:$composeVersion",
+        composeIconsCore                    : "androidx.compose.material:material-icons-core:$composeVersion",
+        composeIconsExtended                : "androidx.compose.material:material-icons-extended:$composeVersion",
+        composeViewModel                    : "androidx.lifecycle:lifecycle-viewmodel-compose:$composeViewModelVersion",
+        composeLifecycleRuntime             : "androidx.lifecycle:lifecycle-runtime-compose:$composeLifecycleRuntimeVersion",
+        navigationFragment                  : "androidx.navigation:navigation-fragment-ktx:$navigationVersion",
         activityKtx                         : "androidx.activity:activity-ktx:$activityKtxVersion",
-        hiltAndroid                         : "com.google.dagger:hilt-android:$hiltVersion",
-        hiltCompiler                        : "com.google.dagger:hilt-compiler:$hiltVersion",
-        retrofit                            : "com.squareup.retrofit2:retrofit:$retrofitVersion",
-        retrofitConverterGson               : "com.squareup.retrofit2:converter-gson:$retrofitVersion",
-        stetho                              : "com.facebook.stetho:stetho:$stethoVersion",
-        stethoOkHttp3                       : "com.facebook.stetho:stetho-okhttp3:$stethoVersion",
+        hiltNavigationCompose               : "androidx.hilt:hilt-navigation-compose:$hiltVersion",
+        hiltAndroid                         : "com.google.dagger:hilt-android:$daggerVersion",
+        hiltCompiler                        : "com.google.dagger:hilt-compiler:$daggerVersion",
+        tmdbJava                            : "com.uwetrottmann.tmdb2:tmdb-java:$tmdbJavaVersion"
     ]
 
     testDependencies = [
