@@ -84,6 +84,7 @@ dependencies {
     implementation dependencies.hiltNavigationCompose
 
     implementation dependencies.tmdbJava
+    implementation dependencies.coilCompose
 
     testImplementation testDependencies.junit
 

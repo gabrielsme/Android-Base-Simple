@@ -23,9 +23,9 @@ class MainViewModel @Inject constructor(
         viewModelScope.launch {
             _movie.emit(Resource.loading())
 
-            moviesRepository.getMovieById(id).let { response ->
-                _movie.emit(response)
-            }
+//            moviesRepository.getMovieById(id).let { response ->
+//                _movie.emit(response)
+//            }
         }
     }
 }

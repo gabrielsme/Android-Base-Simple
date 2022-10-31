@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Android Base Simple</string>
+    <string name="home">Página inicial</string>
+    <string name="search">Search</string>
+    <string name="clear_text">Clear text</string>
+    <string name="no_title">Sem títulos</string>
+    <string name="cd_show_poster_image">Poster de %s</string>
 </resources>
