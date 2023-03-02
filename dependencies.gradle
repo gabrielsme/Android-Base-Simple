@@ -17,7 +17,7 @@ ext {
 
     activityKtxVersion = '1.6.1'
 
-    koinVersion= '3.3.3'
+    hiltVersion = '2.44'
 
     retrofitVersion = '2.9.0'
     stethoVersion = '1.6.0'
@@ -32,8 +32,8 @@ ext {
         materialDesign                      : "com.google.android.material:material:$materialDesignVersion",
         constraintLayout                    : "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion",
         activityKtx                         : "androidx.activity:activity-ktx:$activityKtxVersion",
-        koin                                : "io.insert-koin:koin-core:$koinVersion",
-        koinAndroid                         : "io.insert-koin:koin-android:$koinVersion",
+        hiltAndroid                         : "com.google.dagger:hilt-android:$hiltVersion",
+        hiltCompiler                        : "com.google.dagger:hilt-compiler:$hiltVersion",
         retrofit                            : "com.squareup.retrofit2:retrofit:$retrofitVersion",
         retrofitConverterGson               : "com.squareup.retrofit2:converter-gson:$retrofitVersion",
         stetho                              : "com.facebook.stetho:stetho:$stethoVersion",

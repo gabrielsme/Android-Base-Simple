@@ -2,11 +2,9 @@ package digital.heylab.androidbasesimple
 
 import android.app.Application
 import com.facebook.stetho.Stetho
-import digital.heylab.androidbasesimple.di.networkModule
-import digital.heylab.androidbasesimple.di.productsModule
-import org.koin.android.ext.koin.androidContext
-import org.koin.core.context.startKoin
+import dagger.hilt.android.HiltAndroidApp
 
+@HiltAndroidApp
 class CustomApplication : Application() {
 
     override fun onCreate() {
@@ -16,7 +14,6 @@ class CustomApplication : Application() {
     }
 
     private fun setup() {
-        setupKoin()
         setupStetho()
     }
 
@@ -24,13 +21,4 @@ class CustomApplication : Application() {
         Stetho.initializeWithDefaults(this)
     }
 
-    private fun setupKoin() {
-        startKoin {
-            androidContext(this@CustomApplication)
-            modules(listOf(
-                networkModule,
-                productsModule
-            ))
-        }
-    }
 }

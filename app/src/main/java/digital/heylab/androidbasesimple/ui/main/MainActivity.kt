@@ -3,16 +3,18 @@ package digital.heylab.androidbasesimple.ui.main
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.lifecycle.lifecycleScope
+import dagger.hilt.android.AndroidEntryPoint
 import digital.heylab.androidbasesimple.databinding.ActivityMainBinding
-import digital.heylab.androidbasesimple.utils.resource.Resource
-import digital.heylab.androidbasesimple.utils.resource.Status
 import digital.heylab.androidbasesimple.utils.resource.Status.*
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val viewModel by viewModel<MainViewModel>()
+    private val viewModel:MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,19 +26,24 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupObservers() {
-        viewModel.pokemon.observe(this) { pokemon ->
-            when (pokemon.status) {
-                SUCCESS -> {
-                    Toast.makeText(this, "Pokemon: ${pokemon.data?.location}", Toast.LENGTH_SHORT).show()
+        lifecycleScope.launch {
+            viewModel.pokemon.collect { pokemon ->
+                var text = ""
+                when (pokemon.status) {
+                    SUCCESS -> {
+                        text = "Pokemon: ${pokemon.data?.location}"
+                    }
+                    LOADING -> {
+                        text = "Loading"
+                    }
+                    ERROR -> {
+                        text = "Deu ruim"
+                    }
                 }
-                LOADING -> {
-                    Toast.makeText(this, "Loading", Toast.LENGTH_SHORT).show()
-                }
-                ERROR -> {
-                    Toast.makeText(this, "Deu ruim", Toast.LENGTH_SHORT).show()
-                }
-            }
 
+                Toast.makeText(this@MainActivity, text, Toast.LENGTH_SHORT).show()
+                binding.texto.text = text
+            }
         }
     }
 
