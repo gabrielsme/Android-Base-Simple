@@ -20,29 +20,34 @@ ext {
     hiltVersion = '2.44'
 
     retrofitVersion = '2.9.0'
+    okHttpLoggingInterceptorVersion = '4.9.0'
     stethoVersion = '1.6.0'
+
+    tmdbJavaVersion = '2.8.1'
 
     junitVersion = '4.13.2'
     extJunitVersion = '1.1.5'
     espressoVersion = '3.5.1'
 
     dependencies = [
-        coreKtx                             : "androidx.core:core-ktx:$coreKtxVersion",
-        appCompat                           : "androidx.appcompat:appcompat:$appCompatVersion",
-        materialDesign                      : "com.google.android.material:material:$materialDesignVersion",
-        constraintLayout                    : "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion",
-        activityKtx                         : "androidx.activity:activity-ktx:$activityKtxVersion",
-        hiltAndroid                         : "com.google.dagger:hilt-android:$hiltVersion",
-        hiltCompiler                        : "com.google.dagger:hilt-compiler:$hiltVersion",
-        retrofit                            : "com.squareup.retrofit2:retrofit:$retrofitVersion",
-        retrofitConverterGson               : "com.squareup.retrofit2:converter-gson:$retrofitVersion",
-        stetho                              : "com.facebook.stetho:stetho:$stethoVersion",
-        stethoOkHttp3                       : "com.facebook.stetho:stetho-okhttp3:$stethoVersion",
+        coreKtx                  : "androidx.core:core-ktx:$coreKtxVersion",
+        appCompat                : "androidx.appcompat:appcompat:$appCompatVersion",
+        materialDesign           : "com.google.android.material:material:$materialDesignVersion",
+        constraintLayout         : "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion",
+        activityKtx              : "androidx.activity:activity-ktx:$activityKtxVersion",
+        hiltAndroid              : "com.google.dagger:hilt-android:$hiltVersion",
+        hiltCompiler             : "com.google.dagger:hilt-compiler:$hiltVersion",
+        retrofit                 : "com.squareup.retrofit2:retrofit:$retrofitVersion",
+        retrofitConverterGson    : "com.squareup.retrofit2:converter-gson:$retrofitVersion",
+        okHttpLoggingInterceptor : "com.squareup.okhttp3:logging-interceptor:$okHttpLoggingInterceptorVersion",
+        stetho                   : "com.facebook.stetho:stetho:$stethoVersion",
+        stethoOkHttp3            : "com.facebook.stetho:stetho-okhttp3:$stethoVersion",
+        tmdbJava                 : "com.uwetrottmann.tmdb2:tmdb-java:$tmdbJavaVersion",
     ]
 
     testDependencies = [
-        junit                               : "junit:junit:$junitVersion",
-        extJunit                            : "androidx.test.ext:junit:$extJunitVersion",
-        espresso                            : "androidx.test.espresso:espresso-core:$espressoVersion"
+        junit                    : "junit:junit:$junitVersion",
+        extJunit                 : "androidx.test.ext:junit:$extJunitVersion",
+        espresso                 : "androidx.test.espresso:espresso-core:$espressoVersion"
     ]
 }

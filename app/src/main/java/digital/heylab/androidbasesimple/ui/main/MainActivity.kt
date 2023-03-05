@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
                 var text = ""
                 when (pokemon.status) {
                     SUCCESS -> {
-                        text = "Pokemon: ${pokemon.data?.location}"
+                        text = "Pokemon: ${pokemon.data}"
                     }
                     LOADING -> {
                         text = "Loading"

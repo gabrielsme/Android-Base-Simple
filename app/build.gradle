@@ -6,6 +6,10 @@ plugins {
     id 'com.google.dagger.hilt.android'
 }
 
+def apikeyPropertiesFile = rootProject.file("local.properties")
+def apikeyProperties = new Properties()
+apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
+
 android {
     def globalConfiguration = rootProject.extensions.getByName("ext")
 
@@ -19,6 +23,8 @@ android {
         versionName globalConfiguration["versionName"]
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "THEMOVIEDB_KEY", apikeyProperties['THEMOVIEDB_KEY'])
     }
 
     buildTypes {
@@ -56,10 +62,11 @@ dependencies {
     implementation dependencies.hiltAndroid
     kapt dependencies.hiltCompiler
 
-    implementation dependencies.retrofit
-    implementation dependencies.retrofitConverterGson
+    implementation dependencies.okHttpLoggingInterceptor
     implementation dependencies.stetho
     implementation dependencies.stethoOkHttp3
+
+    implementation dependencies.tmdbJava
 
     testImplementation testDependencies.junit
 
