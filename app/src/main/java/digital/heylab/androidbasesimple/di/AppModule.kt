@@ -8,6 +8,7 @@ import dagger.hilt.components.SingletonComponent
 import digital.heylab.androidbasesimple.BuildConfig
 import digital.heylab.androidbasesimple.data.repository.movies.MoviesRepository
 import digital.heylab.androidbasesimple.data.repository.search.SearchRepository
+import digital.heylab.androidbasesimple.data.repository.trending.TrendingRepository
 import digital.heylab.androidbasesimple.network.ResponseHandler
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Named
@@ -36,4 +37,13 @@ class AppModule {
         responseHandler: ResponseHandler,
         dispatcher: CoroutineDispatcher
     ) = SearchRepository(tmdb, responseHandler, dispatcher)
+
+    @Provides
+    @Singleton
+    fun provideTrendingRepository(
+        tmdb: Tmdb,
+        responseHandler: ResponseHandler,
+        dispatcher: CoroutineDispatcher
+    ) = TrendingRepository(tmdb, responseHandler, dispatcher)
+
 }
