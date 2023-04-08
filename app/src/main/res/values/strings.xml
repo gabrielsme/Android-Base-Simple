@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Android Base Simple</string>
+
+    <string name="searchbar_hint">Search for something...</string>
 </resources>

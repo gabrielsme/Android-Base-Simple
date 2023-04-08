@@ -17,10 +17,10 @@ ext {
 
     activityKtxVersion = '1.6.1'
 
-    hiltVersion = '2.44'
+    hiltVersion = '2.45'
 
     retrofitVersion = '2.9.0'
-    okHttpLoggingInterceptorVersion = '4.9.0'
+    okHttpLoggingInterceptorVersion = '5.0.0-alpha.11'
     stethoVersion = '1.6.0'
 
     tmdbJavaVersion = '2.8.1'
